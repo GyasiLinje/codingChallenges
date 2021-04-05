@@ -1,33 +1,30 @@
-let binarySearch = (num, numbers) => {
-    let startIndex = numbers[0];
-    
-    let endIndex = numbers.length - 1;
-
-    var mid = Math.floor(numbers.length / 2);
-
-
-    console.log(numbers[mid]);
-    if (num < numbers[mid]) {
-        console.log(num, ' is less than mid: ', numbers[mid]);
-        for (var i = 0; i < mid; i++) {
-            if (num == numbers[i]) {
-                return true;
+let binarySearch = (val, numbers) => {
+    let median = Math.floor(numbers.length / 2);
+    if (val > numbers[median]) {
+        console.log("Here")
+        let greaterList = numbers.slice(median, numbers.length);
+        console.log(greaterList);
+        // Compare val to greater half of list
+        while (numbers.length > 1) {
+            let greaterMedian = Math.floor(greaterList.length / 2);
+            console.log(greaterMedian)
+            console.log(greaterList[greaterMedian])
+            if (val < greaterList[greaterMedian]) {
+                greaterList = greaterList.slice(0, greaterMedian)
+                console.log(greaterList)
+            } else if (val > greaterList[median]) {
+                greaterList = greaterList.slice(median, greaterList.length);
+                console.log(greaterList)
+            } else if (val == greaterList[greaterMedian]) {
+                console.log("found")
             }
         }
-    } else if (num > numbers[mid]) {
-        console.log(num, ' is greater than mid: ', numbers[mid]);
-        for (let i = mid; i < numbers.length; i++) {
-            if (num === numbers[i]) {
-                return true;
-            }
-        }
-    } 
-    
-    return false;
-    
+    }
+    console.log("Not found");
+    return "Not found"
 }
 
-var numbers = [1, 10, 20, 50, 100,180];
+var numbers = [1, 10, 20, 50, 100, 180];
 var n = 80;
 
 console.log(binarySearch(n, numbers));

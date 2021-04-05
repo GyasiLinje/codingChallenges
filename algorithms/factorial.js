@@ -3,14 +3,12 @@
 // fact(5); // 5 * 4 * 3 * 2 * 1 = 120
 
 let fact = num => {
-    var prevFactorial = num - 1;
-    for(let i = 1; i < num-1; i++) {
-       prevFactorial = prevFactorial * i;
-       console.log(i, ', ', prevFactorial);
+    if(num === 1) {
+        return 1;
     }
-
-    return prevFactorial * num;
-
+  return num * fact(num-1)
 }
 
-console.log(fact(10))
+console.log(fact(5))
+
+// O(n) time complexity

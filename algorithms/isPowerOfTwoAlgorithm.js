@@ -1,23 +1,40 @@
-// Recursion
+// Solved iterabley in 25 minutes
 let isPowerOfTwo = num => {
-    if(num == 2) {
-        return true;
+    count = 0;
+   if(num == 0) {
+       return 0;
+   } else if(num %2 == 0) {
+       // meat of work
+      while(num > 1){
+           num = num/2
+           if(num > 1 && num%2 != 0) {
+               console.log("here")
+               return false
+           } else {
+               count++;
+           } 
+       } 
     }
-    for(let i = 2; i < num; i ++)   {
-        let val = (num/i);
-        console.log(val)
-        if(val % 2 === 0) {
-            console.log('here')
-            return true;
-        } 
-    }
+    console.log(count)
+   return true
 
-    return false;
+}
+
+// Recursive solution 
+let isPowerOfTwoRecursive = num => {
+    count = 0;
+    if(num == 1) {
+        return count
+    } else {
+        return count +   isPowerOfTwoRecursive(num/2)
+    }
 }
 
 
-let num = 31;
+let num = 2048;
 
-console.log(isPowerOfTwo(num))
+//console.log(isPowerOfTwo(num))
+
+console.log(isPowerOfTwoRecursive(num))
 
 
