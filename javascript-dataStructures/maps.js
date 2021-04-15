@@ -3,6 +3,7 @@ const myMap = new Map();
 myMap.set('averages', [1.53, 1.54])
 myMap.set('lastResult', null);
 
+
 console.log(myMap.averages)
 
 
